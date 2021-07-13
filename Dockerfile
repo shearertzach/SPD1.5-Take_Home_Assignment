@@ -1,16 +1,20 @@
+#!/bin/bash
 FROM node:alpine
 
-ADD . /app
+RUN mkdir -p /usr/src/app
+ENV PORT 3000
 
-WORKDIR /app
+WORKDIR /usr/src/app
+
+COPY package.json /usr/src/app
 
 RUN npm install
 
-EXPOSE 3000
+ENV api_key=bcf569f4749306c69b6a92f459d7853c
+
+COPY . /usr/src/app
 
 RUN npm run build
 
-# Add your OpenWeatherMaps API key
-ENV api_key=
-
-CMD npm start
+EXPOSE 3000
+CMD [ "npm", "start" ]
