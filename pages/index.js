@@ -22,7 +22,7 @@ export default function Home() {
       return setAlert({ type: 'Error', message: 'You must enter a Zip Code' })
     }
 
-    const url = `http://localhost:5000/api/weather/get_weather_by_zip/${zipCode}`
+    const url = `/api/weather/get_weather_by_zip/${zipCode}`
     const options = {
       method: 'GET',
       headers: {
